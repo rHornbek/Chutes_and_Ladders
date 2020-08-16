@@ -8,6 +8,5 @@ public class Tile
 {
     public bool moveEvent;
     public int endTile = -1;
-    
-        
+    public Transform transform;    
 }

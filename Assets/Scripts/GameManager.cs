@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
         {
             GameObject newTile = Instantiate(tilePrefab);
             
+            board.tiles[i].transform = newTile.transform;
+
             TextMesh textMesh = newTile.GetComponentInChildren<TextMesh>();
             textMesh.text = (i+1).ToString("00");
 
@@ -40,7 +42,7 @@ public class GameManager : MonoBehaviour
 
             newTile.name = "Tile" + i + "Row" + row + "Col" + col;
 
-            if((row) == 0)
+            if((row%2) == 0)
             {
                 newTile.transform.position = new Vector3(col*14, 0, row*14);
             }
@@ -66,10 +68,16 @@ public class GameManager : MonoBehaviour
 
         Player currentPlayer = this.players[this._playerTurn];
 
+        int currentLoc = currentPlayer.tileIndex;
+
         currentPlayer.tileIndex += dieRoll;
 
         //Check the tile for chute or ladder
         Tile destinationTile = this.board.tiles[currentPlayer.tileIndex];
+
+        Tile startTile = this.board.tiles[currentLoc];
+
+        currentPlayer.pawnReference.Movement(startTile.transform.position, destinationTile.transform.position);
 
         if(destinationTile.moveEvent == true)
         {
