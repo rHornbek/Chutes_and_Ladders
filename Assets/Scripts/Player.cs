@@ -15,4 +15,7 @@ public class Player
 
     public Color playerColor;
     public int tileIndex;
+
+    public Material material;
+    public Pawn pawnReference;
 }

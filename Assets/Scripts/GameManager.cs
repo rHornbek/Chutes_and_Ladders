@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Board board;
     public Player[] players;
     public GameObject tilePrefab;
+    public Pawn pawnPrefab;
 
     private int _playerTurn = 0;
     private int _round = 1;
@@ -48,6 +49,13 @@ public class GameManager : MonoBehaviour
             {
                 newTile.transform.position = new Vector3((9-(col))*14, 0, row*14);
             }
+        }
+
+        for(int i = 0; i < players.Length; i++)
+        {
+            Pawn pawn = Instantiate(pawnPrefab);
+            pawn.meshRenderer.material = players[i].material;
+            players[i].pawnReference = pawn;
         }
     }
 
