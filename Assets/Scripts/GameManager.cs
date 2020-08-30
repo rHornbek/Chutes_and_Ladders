@@ -5,19 +5,19 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public bool _gameActive = true;
+    public bool _gameActive = true; //Variable determines if the game is ready to play
     public Board board;
-    public Player[] players;
-    public GameObject tilePrefab;
-    public Pawn pawnPrefab;
+    public Player[] players; //Array that tracks all of the players
+    public GameObject tilePrefab; //Variable that represents the Tile prefab
+    public Pawn pawnPrefab; //Variable that represents the Pawn prefab
 
-    private int _playerTurn = 0;
-    private int _round = 1;
+    private int _playerTurn = 0; //Variable used to count the player's turns
+    private int _round = 1; //Variabkle used to count the rounds
    
     // Awake is called when the game runs
     void Awake()
     {
-        if(GameManager.instance != null)
+        if(GameManager.instance != null) //Clears the game when it is restarted
         {
             Destroy(this.gameObject);
             return;
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        for(int i = 0; i < board.tiles.Length; i++)
+        for(int i = 0; i < board.tiles.Length; i++) //Builds the board based on the number of tiles
         {
             GameObject newTile = Instantiate(tilePrefab);
             
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void TakeTurn()
+    public void TakeTurn() //How the turn works
     {
         int dieRoll = RollDie();
         Debug.Log("Player " + (this._playerTurn + 1) + " rolls " + dieRoll);
@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
        }
     }
 
-    public int RollDie()
+    public int RollDie() //Function that provides a 1d6 result
     {
         return Random.Range(1, 6);
     }

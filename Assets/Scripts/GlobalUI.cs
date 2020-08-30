@@ -10,7 +10,7 @@ public class GlobalUI : MonoBehaviour
         
     }
 
-    public void OnRollDie()
+    public void OnRollDie() //I don't know
     {
         GameManager.instance.TakeTurn();
     }

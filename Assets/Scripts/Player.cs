@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Player
 {
-    public enum Color
+    public enum Color //A list of player colors, used to differentiate each of the players
     {
         Orange,
         Yellow,
@@ -13,9 +13,9 @@ public class Player
         Green
     }
 
-    public Color playerColor;
-    public int tileIndex;
+    public Color playerColor; //Sets the Player Color vaiable
+    public int tileIndex; //Sets the variable used to determine the unique position of the tile (space)
 
-    public Material material;
-    public Pawn pawnReference;
+    public Material material; //A variable that allows us to dynamically set different colors to each player
+    public Pawn pawnReference; //A variable used to spawn the Pawn asset
 }
